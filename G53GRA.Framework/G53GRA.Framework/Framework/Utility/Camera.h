@@ -4,7 +4,7 @@
 #include <GL/glut.h>
 #include <Windows.h>
 #else
-#include <GLUT/glut.h>
+#include <GL/glut.h>
 #endif
 
 #include "../Interface/Input.h"
