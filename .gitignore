@@ -14,6 +14,11 @@ profile/
 *.xcworkspace
 *.pbxuser
 
+# IDEA files
+.idea/
+
+# CMake Build Debug
+cmake-build-debug/
 
 #[Dd]ebug/
 [Rr]elease/
