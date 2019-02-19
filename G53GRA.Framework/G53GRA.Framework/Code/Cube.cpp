@@ -3,21 +3,17 @@
 Cube::Cube() :
         _flagReset(false), _iKey(false), _jKey(false), _kKey(false),
         _lKey(false), _oKey(false), _uKey(false), _plusKey(false), _minusKey(false),
-        _upKey(false), _downKey(false), _leftKey(false), _rightKey(false)
-{
+        _upKey(false), _downKey(false), _leftKey(false), _rightKey(false) {
     size(_INIT_SIZE);
 }
 
-void Cube::Display()
-{
+void Cube::Display() {
     glPushMatrix();
 
-
-
-    //put in first position
+    // Put in first position
     glTranslatef(pos[0], pos[1], pos[2]);
 
-    //scale object
+    // Scale object
     glScalef(scale[0], scale[1], scale[2]);
 
     // Rotate object in new position, in order y>z>x axes
@@ -25,63 +21,35 @@ void Cube::Display()
     glRotatef(rotation[2], 0.0f, 0.0f, 1.0f); // angle rz about (0,0,1)
     glRotatef(rotation[0], 1.0f, 0.0f, 0.0f); // angle rx about (1,0,0)
 
-    //call the function to draw the cube
+    // Call the function to draw the cube
     DrawCube();
-
-
 
     glPopMatrix();
 }
 
-void Cube::DrawCube()
-{
-    /*
-    A
-    glVertex3f(-1,1,1);
-    B
-    glVertex3f(1,1,1);
-    C
-    glVertex3f(-1,-1,1);
-    D
-    glVertex3f(1,-1,1);
-    E
-    glVertex3f(-1,-1,-1);
-    F
-    glVertex3f(1,-1,-1);
-    G
-    glVertex3f(1,1,-1);
-    H
-    glVertex3f(-1,1,-1);
-
-    */
-
-    //glEnable(GL_BLEND);
-    //glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
+void Cube::DrawCube() {
     glBegin(GL_TRIANGLES);
 
-    //draw the tetrahedron
-    //side 1 (F-C-H)
+    // Draw the tetrahedron
+    // Side 1 (F-C-H)
     glColor4f(1.0f, 1.0f, 0.0f, 1.0f);
     glVertex3f(1, -1, -1);
     glVertex3f(-1, -1, 1);
     glVertex3f(-1, 1, -1);
 
-
-    //side 2 (F-H-B)
+    // Side 2 (F-H-B)
     glColor3f(0.0f, 1.0f, 0.0f);
     glVertex3f(1, -1, -1);
     glVertex3f(-1, 1, -1);
     glVertex3f(1, 1, 1);
 
-
-    //slide 3 (B-C-F)
+    // Side 3 (B-C-F)
     glColor3f(1.0f, 0.0f, 0.0f);
     glVertex3f(1, 1, 1);
     glVertex3f(-1, -1, 1);
     glVertex3f(1, -1, -1);
 
-    //slide 4 (H-C-B)
+    // Side 4 (H-C-B)
     glColor3f(0.0f, 0.0f, 1.0f);
     glVertex3f(-1, 1, -1);
     glVertex3f(-1, -1, 1);
@@ -89,7 +57,7 @@ void Cube::DrawCube()
 
     //draw the front using triangles
     //triangle 1 (A-C-B)
-    glColor4f(1.0f, 0.0f, 0.0f,0.3f);
+    glColor4f(1.0f, 0.0f, 0.0f, 0.3f);
     glVertex3f(-1, 1, 1);
     glVertex3f(-1, -1, 1);
     glVertex3f(1, 1, 1);
@@ -101,7 +69,7 @@ void Cube::DrawCube()
 
     //draw the back face
     //triangle 3 (G-E-H) (clockwise)
-    glColor4f(0.0f, 0.0f, 1.0f,0.3f);
+    glColor4f(0.0f, 0.0f, 1.0f, 0.3f);
     glVertex3f(1, 1, -1);
     glVertex3f(-1, -1, -1);
     glVertex3f(-1, 1, -1);
@@ -164,9 +132,9 @@ void Cube::DrawCube()
 
     glBegin(GL_LINE_LOOP);
     glColor4f(0.0f, 0.0f, 0.0f, 1.0f);
+
     //need to draw the lines in.
     //A-B-D-C-A-H-G-B-F-G-H-E-F-D-C-E-C-F-G-H-B-C-H-F-D-C
-
     glVertex3f(-1, 1, 1);
     glVertex3f(1, 1, 1);
     glVertex3f(1, -1, 1);
@@ -191,18 +159,17 @@ void Cube::DrawCube()
     glVertex3f(-1, 1, -1);
     glVertex3f(1, -1, -1);
 
-    //glVertex3f(-1, -1, -1);
     glEnd();
 
     glBegin(GL_LINE_LOOP);
+
     //C-E
     glVertex3f(-1, -1, 1);
     glVertex3f(-1, -1, -1);
     glEnd();
 }
 
-void Cube::Update(const double& deltaTime)
-{
+void Cube::Update(const double &deltaTime) {
     /*
     The update function gives a smooth motion between frames.
     Update is called before drawing every frame so we can use it to
@@ -215,12 +182,11 @@ void Cube::Update(const double& deltaTime)
     and the this then we can multiply 100*deltaTime to calculate
     the tranform for this frame at a rate of 100 units per second.
     */
-    float velocity = 100.0f*static_cast<float>(deltaTime);
-    float shrinkRate = -50.0f*static_cast<float>(deltaTime);
+    float velocity = 100.0f * static_cast<float>(deltaTime);
+    float shrinkRate = -50.0f * static_cast<float>(deltaTime);
 
     // Spacebar will reset transformation values
-    if (_flagReset)
-    {
+    if (_flagReset) {
         orientation(0.0f, 0.0f, 0.0f);
         size(_INIT_SIZE);
         position(0.0f, 0.0f, 0.0f);
@@ -257,16 +223,14 @@ void Cube::Update(const double& deltaTime)
     scale by all x,y,z axes equally, + to grow, - to shrink
     */
     // '-' pressed down (and no scale value is below 1.0)
-    if (_minusKey && scale[0] > 1.0f && scale[1] > 1.0f && scale[2] > 1.0f)
-    {
+    if (_minusKey && scale[0] > 1.0f && scale[1] > 1.0f && scale[2] > 1.0f) {
         // increase shrinkage by constant (negative) rate
         scale[0] += shrinkRate;
         scale[1] += shrinkRate;
         scale[2] += shrinkRate;
     }
     // '+' pressed down
-    if (_plusKey)
-    {
+    if (_plusKey) {
         // decrease shrinkage (e.g. grow)
         scale[0] -= shrinkRate;
         scale[1] -= shrinkRate;
@@ -286,8 +250,7 @@ void Cube::Update(const double& deltaTime)
     if (_rightKey) pos[0] += velocity;
 }
 
-void Cube::HandleKey(unsigned char key, int state, int x, int y)
-{
+void Cube::HandleKey(unsigned char key, int state, int x, int y) {
     /*
     This function is called continuously when a key is pressed AND when
     it is released. The variable 'key' describes the character or the key,
@@ -300,8 +263,7 @@ void Cube::HandleKey(unsigned char key, int state, int x, int y)
     // Switch on key char
     // Set flag for control keys, (i,j,k,l,o,u,+,-,space) to state value
     // i.e. if 'i' is pressed, _iKey = true, if 'i' released, _iKey = false
-    switch (key)
-    {
+    switch (key) {
         case 'i':
             _iKey = static_cast<GLboolean>(state);
             break;
@@ -333,8 +295,7 @@ void Cube::HandleKey(unsigned char key, int state, int x, int y)
     }
 }
 
-void Cube::HandleSpecialKey(int key, int state, int x, int y)
-{
+void Cube::HandleSpecialKey(int key, int state, int x, int y) {
     /*
     This function is called continuously when a special key is pressed
     AND when it is released. The variable 'key' describes the keycode
@@ -350,8 +311,7 @@ void Cube::HandleSpecialKey(int key, int state, int x, int y)
     // Switch on key code (using GLUT #defines)
     // Set flag for control keys, (up, down, left, right) to state value
     // i.e. if 'up' is pressed, _upKey = true, if 'up' released, _upKey = false
-    switch (key)
-    {
+    switch (key) {
         case GLUT_KEY_UP:
             _upKey = static_cast<GLboolean>(state);
             break;
