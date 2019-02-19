@@ -1,9 +1,5 @@
 #include "MyScene.h"
 
-#include <Demos/Triangle/Triangle.h>
-#include <Demos/Triforce/Triforce.h>
-#include <Demos/Cube/Cube.h>
-
 MyScene::MyScene(int argc, char** argv, const char *title, const int& windowWidth, const int& windowHeight)
 	: Scene(argc, argv, title, windowWidth, windowHeight)
 {
