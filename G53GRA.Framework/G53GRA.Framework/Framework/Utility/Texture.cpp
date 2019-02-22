@@ -6,8 +6,15 @@
 #include <GL/glu.h>
 #include <GL/glut.h>
 #else
+
+#ifdef __linux__
 #include <GL/gl.h>
 #include <GL/glut.h>
+#else
+#include <OpenGL/OpenGL.h>
+#include <GLUT/glut.h>
+#endif
+
 #pragma pack(1)
 #define WORD unsigned short
 #define DWORD unsigned int

@@ -3,8 +3,10 @@
 #ifdef _WIN32
 #include <GL/glut.h>
 #include <Windows.h>
-#else
+#elif __linux__
 #include <GL/glut.h>
+#else
+#include <GLUT/glut.h>
 #endif
 
 #include "../Interface/Input.h"
