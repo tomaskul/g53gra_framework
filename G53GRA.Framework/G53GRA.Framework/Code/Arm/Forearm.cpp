@@ -4,8 +4,10 @@
 
 #include "Forearm.h"
 
-Forearm::Forearm(double forearm_width) : m_forearm_width(forearm_width) {
-
+Forearm::Forearm(double forearm_girth, double forearm_length_scale = 3.0)
+    : m_forearm_girth(forearm_girth),
+    m_forearm_length_scale(forearm_length_scale)
+{
 }
 
 void Forearm::Display() {
@@ -17,7 +19,9 @@ void Forearm::Display() {
 }
 
 void Forearm::DrawForearm() {
-    // Let's presume that forearm is 3 times the width.
-    glScalef(1, 3, 1);
-    glutSolidCube(m_forearm_width);
+    // Ensure that forearm is longer than it is wide.
+    glScalef(1, m_forearm_length_scale, 1);
+
+    // Draw the cube representing forearm of specified size.
+    glutSolidCube(m_forearm_girth);
 }

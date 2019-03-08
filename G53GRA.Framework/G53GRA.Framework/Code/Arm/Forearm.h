@@ -7,7 +7,12 @@ class Forearm :
         public DisplayableObject
 {
 public:
-    Forearm(double forearm_width);
+    /**
+     * Constructs a basic, rectangular forearm.
+     * @param forearm_girth - Girth of the forearm cube.
+     * @param forearm_length_scale - Scale representing forearm length to girth ratio. 3 by default.
+     */
+    Forearm(double forearm_girth, double forearm_length_scale);
     ~Forearm(){}
 
     void Display();
@@ -15,5 +20,6 @@ public:
 private:
     void DrawForearm();
 
-    double m_forearm_width;
+    double m_forearm_girth;
+    double m_forearm_length_scale;
 };
