@@ -4,7 +4,7 @@
 
 #include "Forearm.h"
 
-Forearm::Forearm(double forearm_girth, double forearm_length_scale = 3.0)
+Forearm::Forearm(double forearm_girth, double forearm_length_scale)
     : m_forearm_girth(forearm_girth),
     m_forearm_length_scale(forearm_length_scale)
 {

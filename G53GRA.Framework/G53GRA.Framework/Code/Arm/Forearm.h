@@ -12,7 +12,7 @@ public:
      * @param forearm_girth - Girth of the forearm cube.
      * @param forearm_length_scale - Scale representing forearm length to girth ratio. 3 by default.
      */
-    Forearm(double forearm_girth, double forearm_length_scale);
+    Forearm(double forearm_girth, double forearm_length_scale = 3.0);
     ~Forearm(){}
 
     void Display();
