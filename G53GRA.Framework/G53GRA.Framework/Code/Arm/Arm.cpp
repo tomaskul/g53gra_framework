@@ -4,8 +4,9 @@
 
 #include "Arm.h"
 
-Arm::Arm(double arm_width) : m_arm_width(arm_width) {
-
+Arm::Arm(double arm_width, double arm_length_scale)
+    : m_arm_width(arm_width), m_arm_length_scale(arm_length_scale)
+{
 }
 
 void Arm::Display() {
@@ -22,7 +23,6 @@ void Arm::DrawArm() {
 
     glRotatef(-45.0, 0, 0, 1);
 
-    // Let's presume that arm is 3.5 times it's width.
-    glScalef(1, 3.5, 1);
+    glScalef(1, m_arm_length_scale, 1);
     glutSolidCube(m_arm_width);
 }
