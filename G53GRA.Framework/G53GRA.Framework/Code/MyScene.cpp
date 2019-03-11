@@ -1,3 +1,4 @@
+#include <Arm/FullArm.h>
 #include "MyScene.h"
 
 
@@ -9,13 +10,14 @@ MyScene::MyScene(int argc, char** argv, const char *title, const int& windowWidt
 
 void MyScene::Initialise()
 {
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+
+	FullArm *fullArm = new FullArm(50.0, 50.0);
+	AddObjectToScene(fullArm);
+  
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	torso *c = new torso();
 	AddObjectToScene(c);
-
-	//Cube *mycube = new Cube();
-	//AddObjectToScene(mycube);
-
 }
 
 void MyScene::Projection()
