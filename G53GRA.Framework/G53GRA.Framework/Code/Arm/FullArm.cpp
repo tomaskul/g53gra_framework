@@ -29,6 +29,8 @@ void FullArm::DrawFullArm() {
 void FullArm::DrawForearm() {
     glPushMatrix();
 
+    glTranslatef(-15, 0, 0);
+
     // Ensure that forearm is longer than it is wide.
     glScalef(1, m_forearm_length_scale, 1);
 
@@ -42,7 +44,7 @@ void FullArm::DrawUpperarm() {
     glPushMatrix();
 
     // Move the arm into position.
-    glTranslated(50, 125, 0);
+    glTranslated(-10, 15, 0);
 
     glRotatef(-45.0, 0, 0, 1);
 

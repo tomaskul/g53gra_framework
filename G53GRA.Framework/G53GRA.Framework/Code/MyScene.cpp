@@ -1,4 +1,5 @@
 #include <Arm/FullArm.h>
+#include <torso.h>
 #include "MyScene.h"
 
 
@@ -12,7 +13,7 @@ void MyScene::Initialise()
 {
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
-	FullArm *fullArm = new FullArm(50.0, 50.0);
+	FullArm *fullArm = new FullArm(7.5, 7.5);
 	AddObjectToScene(fullArm);
   
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
