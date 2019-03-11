@@ -13,8 +13,10 @@ void MyScene::Initialise()
 {
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
-	FullArm *fullArm = new FullArm(0.75, 7.5);
-	AddObjectToScene(fullArm);
+	FullArm *leftArm = new FullArm(0.75, 7.5, true);
+	FullArm *rightArm = new FullArm(0.75, 7.5, false);
+	AddObjectToScene(leftArm);
+	AddObjectToScene(rightArm);
   
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	torso *c = new torso();

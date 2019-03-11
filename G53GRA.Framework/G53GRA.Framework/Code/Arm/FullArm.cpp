@@ -4,9 +4,10 @@
 
 #include "FullArm.h"
 
-FullArm::FullArm(double forearm_girth, double arm_girth, double forearm_length_scale, double arm_length_scale)
+FullArm::FullArm(double forearm_girth, double arm_girth, bool isLeft, double forearm_length_scale, double arm_length_scale)
         : m_forearm_girth(forearm_girth),
           m_arm_girth(arm_girth),
+          m_is_left(isLeft),
           m_forearm_length_scale(forearm_length_scale),
           m_arm_length_scale(arm_length_scale) {
 }
@@ -20,12 +21,14 @@ void FullArm::Display() {
 }
 
 void FullArm::DrawFullArm() {
-    DrawForearm();
     DrawUpperarm();
+    //DrawForearm();
 }
 
 void FullArm::DrawForearm() {
     glPushMatrix();
+
+
 
     glTranslatef(-15, 0, 0);
 
@@ -42,11 +45,15 @@ void FullArm::DrawUpperarm() {
     glPushMatrix();
 
     // Move the arm into position.
-    glTranslatef(-10, 20.f, 0.f);
+    if (m_is_left){
+        glTranslatef(-SHOULDER_OFFSET, 20, 0);
+        glRotatef(-ARM_BEND_ANGLE, 0, 0, 1);
+    }else{
+        glTranslatef(SHOULDER_OFFSET, 20, 0);
+        glRotatef(ARM_BEND_ANGLE, 0, 0, 1);
+    }
 
-    glRotatef(-45.0, 0, 0, 1);
-
-    glScalef(10, 20, 10);
+    glScalef(5, 20, 5);
 
     glutSolidCube(m_forearm_girth);
 
