@@ -26,9 +26,9 @@ void FullArm::DrawForearm() {
     glPushMatrix();
 
     if (m_is_left){
-        glTranslatef(15, 10, 0);
+        glTranslatef(15, 17, 0);
     } else {
-        glTranslatef(-15, 10, 0);
+        glTranslatef(-15, 17, 0);
     }
 
     // Ensure that forearm is longer than it is wide.
@@ -45,10 +45,10 @@ void FullArm::DrawUpperarm() {
 
     // Move the arm into position.
     if (m_is_left){
-        glTranslatef(-SHOULDER_OFFSET, 20, 0);
+        glTranslatef(-SHOULDER_OFFSET, 25, 0);
         glRotatef(-ARM_BEND_ANGLE, 0, 0, 1);
     }else{
-        glTranslatef(SHOULDER_OFFSET, 20, 0);
+        glTranslatef(SHOULDER_OFFSET, 25, 0);
         glRotatef(ARM_BEND_ANGLE, 0, 0, 1);
     }
 

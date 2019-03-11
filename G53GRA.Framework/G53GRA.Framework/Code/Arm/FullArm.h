@@ -20,7 +20,7 @@ private:
     void DrawUpperarm();
 
     const double SHOULDER_OFFSET = 9;
-    const double ARM_BEND_ANGLE = 45;
+    const double ARM_BEND_ANGLE = 70;
     const double ARM_WIDTH_HEIGHT = 5;
 
     double m_arm_girth;
