@@ -1,6 +1,8 @@
 #pragma once
 
 #include "../Framework/Engine/Scene.h"
+#include "torso.h"
+#include "Animation.h"
 
 class MyScene :
 	public Scene
