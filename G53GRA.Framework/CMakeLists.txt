@@ -39,7 +39,10 @@ add_executable(G53GRA_Framework
         G53GRA.Framework/Framework/Utility/Texture.cpp
         G53GRA.Framework/Framework/Utility/Texture.h
         G53GRA.Framework/Framework/Utility/VectorMath.h
-        G53GRA.Framework.sln)
+        G53GRA.Framework.sln
+        G53GRA.Framework/Code/Arm/FullArm.cpp
+        G53GRA.Framework/Code/Arm/FullArm.h
+        )
 
 # Prevent 'undefined reference to 'gl____' functions
 target_link_libraries(G53GRA_Framework ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})
