@@ -1,6 +1,7 @@
 #include <Arm/FullArm.h>
 #include "MyScene.h"
 
+
 MyScene::MyScene(int argc, char** argv, const char *title, const int& windowWidth, const int& windowHeight)
 	: Scene(argc, argv, title, windowWidth, windowHeight)
 {
@@ -13,6 +14,10 @@ void MyScene::Initialise()
 
 	FullArm *fullArm = new FullArm(50.0, 50.0);
 	AddObjectToScene(fullArm);
+  
+	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+	torso *c = new torso();
+	AddObjectToScene(c);
 }
 
 void MyScene::Projection()
