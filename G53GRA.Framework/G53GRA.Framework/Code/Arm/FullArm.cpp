@@ -20,10 +20,8 @@ void FullArm::Display() {
 }
 
 void FullArm::DrawFullArm() {
-
     DrawForearm();
     DrawUpperarm();
-
 }
 
 void FullArm::DrawForearm() {
@@ -44,11 +42,12 @@ void FullArm::DrawUpperarm() {
     glPushMatrix();
 
     // Move the arm into position.
-    glTranslated(-10, 15, 0);
+    glTranslatef(-10, 20.f, 0.f);
 
     glRotatef(-45.0, 0, 0, 1);
 
-    glScalef(1, m_arm_length_scale, 1);
+    glScalef(10, 20, 10);
+
     glutSolidCube(m_forearm_girth);
 
     glPopMatrix();

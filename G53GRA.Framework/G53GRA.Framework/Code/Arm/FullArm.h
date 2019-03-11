@@ -8,7 +8,7 @@ class FullArm :
         public DisplayableObject
 {
 public:
-    FullArm(double forearm_girth, double arm_girth, double forearm_length_scale = 3.0, double arm_length_scale = 3.0);
+    FullArm(double forearm_girth, double arm_girth, double forearm_length_scale = 3.0, double arm_length_scale = 2.0);
     ~FullArm(){};
 
     void Display();
