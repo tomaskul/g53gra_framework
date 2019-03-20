@@ -9,14 +9,17 @@
   <ItemGroup>
     <ClCompile Include="Code\main.cpp" />
     <ClCompile Include="Code\MyScene.cpp" />
+    <ClCompile Include="Code\Floor.cpp" />
     <ClCompile Include="Framework\Engine\Engine.cpp" />
     <ClCompile Include="Framework\Engine\Scene.cpp" />
     <ClCompile Include="Framework\Utility\Camera.cpp" />
     <ClCompile Include="Framework\Utility\Texture.cpp" />
     <ClCompile Include="Code\torso.cpp" />
+    <ClCompile Include="Code\Arm\FullArm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\MyScene.h" />
+    <ClInclude Include="Code\Floor.h" />
     <ClInclude Include="Framework\Engine\Engine.h" />
     <ClInclude Include="Framework\Engine\Scene.h" />
     <ClInclude Include="Framework\Interface\Animation.h" />
@@ -26,6 +29,7 @@
     <ClInclude Include="Framework\Utility\Texture.h" />
     <ClInclude Include="Framework\Utility\VectorMath.h" />
     <ClInclude Include="Code\torso.h" />
+    <ClInclude Include="Code\Arm\FullArm.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{CE3A8304-475E-425E-BA11-FDAA6293C905}</ProjectGuid>

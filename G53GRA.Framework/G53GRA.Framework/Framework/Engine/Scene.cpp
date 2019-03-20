@@ -3,6 +3,7 @@
 #include "Scene.h"
 #include "../Interface/DisplayableObject.h"
 #include <cstdlib>
+#include "MyScene.h"
 
 Texture Scene::texture = Texture();		// Initialise Texture handler
 Camera Scene::camera = Camera();        // Initialise Camera object

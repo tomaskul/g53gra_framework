@@ -5,24 +5,24 @@
 #include <Interface/DisplayableObject.h>
 
 class FullArm :
-        public DisplayableObject
+	public DisplayableObject
 {
 public:
-    FullArm(double arm_girth, bool isLeft);
-    ~FullArm(){};
+	FullArm(double arm_girth, bool isLeft);
+	~FullArm() {};
 
-    void Display();
+	void Display();
 
 private:
-    void DrawFullArm();
+	void DrawFullArm();
 
-    void DrawForearm();
-    void DrawUpperarm();
+	void DrawForearm();
+	void DrawUpperarm();
 
-    const double SHOULDER_OFFSET = 9;
-    const double ARM_BEND_ANGLE = 70;
-    const double ARM_WIDTH_HEIGHT = 5;
+	const double SHOULDER_OFFSET = 9;
+	const double ARM_BEND_ANGLE = 70;
+	const double ARM_WIDTH_HEIGHT = 5;
 
-    double m_arm_girth;
-    bool m_is_left;
+	double m_arm_girth;
+	bool m_is_left;
 };

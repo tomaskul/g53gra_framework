@@ -10,21 +10,34 @@ FullArm::FullArm(double arm_girth, bool isLeft)
 }
 
 void FullArm::Display() {
-    glPushMatrix();
+	glPushMatrix();
 
-    DrawFullArm();
+	DrawFullArm();
 
-    glPopMatrix();
+	glPopMatrix();
 }
 
 void FullArm::DrawFullArm() {
-    DrawUpperarm();
-    DrawForearm();
+	DrawUpperarm();
+	DrawForearm();
 }
 
 void FullArm::DrawForearm() {
-    glPushMatrix();
+	glPushMatrix();
 
+	if (m_is_left) {
+		glTranslatef(15, 17, 0);
+	}
+	else {
+		glTranslatef(-15, 17, 0);
+	}
+
+	// Ensure that forearm is longer than it is wide.
+	glScalef(ARM_WIDTH_HEIGHT, 17, ARM_WIDTH_HEIGHT);
+
+	// Draw the cube representing forearm of specified size.
+	glutSolidCube(m_arm_girth);
+  
     if (m_is_left){
         glTranslatef(15, 17, 0);
     } else {
@@ -37,24 +50,25 @@ void FullArm::DrawForearm() {
     // Draw the cube representing forearm of specified size.
     glutSolidCube(m_arm_girth);
 
-    glPopMatrix();
+	glPopMatrix();
 }
 
 void FullArm::DrawUpperarm() {
-    glPushMatrix();
+	glPushMatrix();
+  
+	// Move the arm into position.
+	if (m_is_left) {
+		glTranslatef(-SHOULDER_OFFSET, 25, 0);
+		glRotatef(-ARM_BEND_ANGLE, 0, 0, 1);
+	}
+	else {
+		glTranslatef(SHOULDER_OFFSET, 25, 0);
+		glRotatef(ARM_BEND_ANGLE, 0, 0, 1);
+	}
 
-    // Move the arm into position.
-    if (m_is_left){
-        glTranslatef(-SHOULDER_OFFSET, 25, 0);
-        glRotatef(-ARM_BEND_ANGLE, 0, 0, 1);
-    }else{
-        glTranslatef(SHOULDER_OFFSET, 25, 0);
-        glRotatef(ARM_BEND_ANGLE, 0, 0, 1);
-    }
+	glScalef(ARM_WIDTH_HEIGHT, 20, ARM_WIDTH_HEIGHT);
 
-    glScalef(ARM_WIDTH_HEIGHT, 20, ARM_WIDTH_HEIGHT);
+	glutSolidCube(m_arm_girth);
 
-    glutSolidCube(m_arm_girth);
-
-    glPopMatrix();
+	glPopMatrix();
 }
