@@ -44,6 +44,8 @@ add_executable(G53GRA_Framework
         G53GRA.Framework/Code/Arm/FullArm.h
         G53GRA.Framework/Code/torso.cpp
         G53GRA.Framework/Code/torso.h
+        G53GRA.Framework/Code/Floor.cpp
+        G53GRA.Framework/Code/Floor.h
         )
 
 # Prevent 'undefined reference to 'gl____' functions
