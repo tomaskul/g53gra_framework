@@ -12,12 +12,11 @@ MyScene::MyScene(int argc, char** argv, const char *title, const int& windowWidt
 
 void MyScene::Initialise()
 {
-
 	glEnable(GL_NORMALIZE);
 	setLighting();
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-	
 
+	// Robot.
 	FullArm *leftArm = new FullArm(0.75, true);
 	FullArm *rightArm = new FullArm(0.75, false);
 	AddObjectToScene(leftArm);
@@ -27,14 +26,10 @@ void MyScene::Initialise()
 	torso *c = new torso();
 	AddObjectToScene(c);
 
-	
+	// Lighting
 	Floor *flooring = new Floor();
 	flooring->size(5.0f);
 	AddObjectToScene(flooring);
-
-	
-
-	
 }
 
 void MyScene::Projection()
