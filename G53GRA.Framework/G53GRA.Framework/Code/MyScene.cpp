@@ -1,7 +1,6 @@
-#include <Arm/FullArm.h>
-#include <torso.h>
 #include "MyScene.h"
 #include "Floor.h"
+#include "Robot.h"
 
 
 MyScene::MyScene(int argc, char** argv, const char *title, const int& windowWidth, const int& windowHeight)
@@ -17,14 +16,10 @@ void MyScene::Initialise()
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
 	// Robot.
-	FullArm *leftArm = new FullArm(0.75, true);
-	FullArm *rightArm = new FullArm(0.75, false);
-	AddObjectToScene(leftArm);
-	AddObjectToScene(rightArm);
-  
+	Robot *robot = new Robot();
+	AddObjectToScene(robot);
+
 	glClearColor(1.0f, 0.5f, 0.5f, 1.0f);
-	torso *c = new torso();
-	AddObjectToScene(c);
 
 	// Lighting
 	Floor *flooring = new Floor();
@@ -71,6 +66,5 @@ void MyScene::setLighting()
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
 	glEnable(GL_LIGHT1);
-
 
 }

@@ -37,18 +37,6 @@ void FullArm::DrawForearm() {
 
 	// Draw the cube representing forearm of specified size.
 	glutSolidCube(m_arm_girth);
-  
-    if (m_is_left){
-        glTranslatef(15, 17, 0);
-    } else {
-        glTranslatef(-15, 17, 0);
-    }
-
-    // Ensure that forearm is longer than it is wide.
-    glScalef(ARM_WIDTH_HEIGHT, 17, ARM_WIDTH_HEIGHT);
-
-    // Draw the cube representing forearm of specified size.
-    glutSolidCube(m_arm_girth);
 
 	glPopMatrix();
 }
