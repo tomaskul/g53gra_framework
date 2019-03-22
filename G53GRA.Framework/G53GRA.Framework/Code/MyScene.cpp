@@ -1,5 +1,6 @@
 #include <Arm/FullArm.h>
 #include <torso.h>
+#include <Leg/Leg.h>
 #include "MyScene.h"
 #include "Floor.h"
 
@@ -26,6 +27,11 @@ void MyScene::Initialise()
 	torso *c = new torso();
 	AddObjectToScene(c);
 
+	Leg *leftLeg = new Leg(0.75, true);
+	Leg *rightLeg = new Leg(0.75, false);
+	AddObjectToScene(leftLeg);
+	AddObjectToScene(rightLeg);
+
 	// Lighting
 	Floor *flooring = new Floor();
 	flooring->size(5.0f);
@@ -40,6 +46,7 @@ void MyScene::Projection()
 
 void MyScene::setLighting()
 {
+	/*
 	float redAmbient[] = {0.4f,0.f,0.f,1.f};
 	float redDiffuse[] = { 1.f,0.f,0.f,1.f };
 	float redSpecular[] = { 1.f,0.f,0.f,1.f };
@@ -71,6 +78,6 @@ void MyScene::setLighting()
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
 	glEnable(GL_LIGHT1);
-
+*/
 
 }
