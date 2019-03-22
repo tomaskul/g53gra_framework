@@ -2,6 +2,9 @@
 // Created by ghost on 08/03/19.
 //
 
+#ifndef G53GRA_FRAMEWORK_FULLARM_H
+#define G53GRA_FRAMEWORK_FULLARM_H
+
 #include <Interface/DisplayableObject.h>
 
 class FullArm :
@@ -26,3 +29,5 @@ private:
 	double m_arm_girth;
 	bool m_is_left;
 };
+
+#endif

@@ -1,6 +1,8 @@
 //
 // Created by ghost on 22/03/19.
 //
+#ifndef G53GRA_FRAMEWORK_LEG_H
+#define G53GRA_FRAMEWORK_LEG_H
 
 #include <Interface/DisplayableObject.h>
 
@@ -25,3 +27,5 @@ private:
     double m_leg_girth;
     bool m_is_left;
 };
+
+#endif
