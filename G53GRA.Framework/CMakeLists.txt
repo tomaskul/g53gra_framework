@@ -47,7 +47,7 @@ add_executable(G53GRA_Framework
         G53GRA.Framework/Code/Floor.cpp
         G53GRA.Framework/Code/Floor.h
         G53GRA.Framework/Code/Leg/Leg.cpp
-        G53GRA.Framework/Code/Leg/Leg.h)
+        G53GRA.Framework/Code/Leg/Leg.h G53GRA.Framework/Code/Robot.cpp G53GRA.Framework/Code/Robot.h)
 
 # Prevent 'undefined reference to 'gl____' functions
 target_link_libraries(G53GRA_Framework ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})
