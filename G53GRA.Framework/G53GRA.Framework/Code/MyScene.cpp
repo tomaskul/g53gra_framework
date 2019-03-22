@@ -1,8 +1,6 @@
-#include <Arm/FullArm.h>
-#include <torso.h>
-#include <Leg/Leg.h>
 #include "MyScene.h"
 #include "Floor.h"
+#include "Robot.h"
 
 
 MyScene::MyScene(int argc, char** argv, const char *title, const int& windowWidth, const int& windowHeight)
@@ -18,19 +16,10 @@ void MyScene::Initialise()
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
 	// Robot.
-	FullArm *leftArm = new FullArm(0.75, true);
-	FullArm *rightArm = new FullArm(0.75, false);
-	AddObjectToScene(leftArm);
-	AddObjectToScene(rightArm);
-  
-	glClearColor(1.0f, 0.5f, 0.5f, 1.0f);
-	torso *c = new torso();
-	AddObjectToScene(c);
+	Robot *robot = new Robot();
+	AddObjectToScene(robot);
 
-	Leg *leftLeg = new Leg(0.75, true);
-	Leg *rightLeg = new Leg(0.75, false);
-	AddObjectToScene(leftLeg);
-	AddObjectToScene(rightLeg);
+	glClearColor(1.0f, 0.5f, 0.5f, 1.0f);
 
 	// Lighting
 	Floor *flooring = new Floor();
@@ -46,7 +35,6 @@ void MyScene::Projection()
 
 void MyScene::setLighting()
 {
-	/*
 	float redAmbient[] = {0.4f,0.f,0.f,1.f};
 	float redDiffuse[] = { 1.f,0.f,0.f,1.f };
 	float redSpecular[] = { 1.f,0.f,0.f,1.f };
@@ -78,6 +66,5 @@ void MyScene::setLighting()
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
 	glEnable(GL_LIGHT1);
-*/
 
 }
