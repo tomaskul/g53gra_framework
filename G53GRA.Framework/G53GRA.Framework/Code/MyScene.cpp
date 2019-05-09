@@ -1,3 +1,5 @@
+#include <Train/Locomotive.h>
+#include <Landscape/Tree/Tree.h>
 #include "MyScene.h"
 
 MyScene::MyScene(int argc, char** argv, const char *title, const int& windowWidth, const int& windowHeight)
@@ -9,6 +11,13 @@ MyScene::MyScene(int argc, char** argv, const char *title, const int& windowWidt
 void MyScene::Initialise()
 {
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	Locomotive *locomotive = new Locomotive();
+	AddObjectToScene(locomotive);
+
+	//Tree *tree = new Tree();
+	//AddObjectToScene(tree);
+
+	glClearColor(1.0f, 0.5f, 0.5f, 1.0f);
 }
 
 void MyScene::Projection()
