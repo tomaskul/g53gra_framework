@@ -29,11 +29,12 @@ private:
     float TOTAL_WIDTH = 3.12;
     float TOTAL_LENGTH = 21.69;
 
-    // 5th of total length.
-    float CABIN_LENGTH = 3.472;
-    float NOSE_LENGTH = 0.868;
+    float LOCOMOTIVE_BODY_LENGTH = 14.46; // 2/3 of total length.
 
-    float LOCOMOTIVE_BODY_LENGTH = 17.35;
+    float CABIN_LENGTH = 7.23; // 3rd of total length.
+
+    float NOSE_HEIGHT = 3.808; // 4/5th of total height.
+    float NOSE_LENGTH = 2.892; // 2/5 of cabin length.
 };
 
 

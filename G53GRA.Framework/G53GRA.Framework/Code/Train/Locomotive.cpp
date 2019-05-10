@@ -11,7 +11,6 @@ Locomotive::Locomotive(){
 
 void Locomotive::Display() {
     glColor3f(1, 0.26f, 0.26f); // rgb
-    //this->DrawLocomotiveOctagon(100);
     this->DrawMainBody();
     this->DrawCabin();
     this->DrawNose();
@@ -19,49 +18,37 @@ void Locomotive::Display() {
 
 void Locomotive::DrawMainBody() {
     glPushMatrix();
-    glColor3f(1, 1, 1);
-    glScalef(LOCOMOTIVE_BODY_LENGTH / TOTAL_WIDTH, TOTAL_HEIGHT / TOTAL_WIDTH, 1); // x, y, z
+
+    glTranslatef(TOTAL_LENGTH + (CABIN_LENGTH*1.21f) + NOSE_LENGTH, 0, 0);
+    glScalef(CABIN_LENGTH / 2, 1, 1);
     glutSolidCube(LOCOMOTIVE_BODY_LENGTH);
+
     glPopMatrix();
 }
 
 void Locomotive::DrawCabin() {
     glPushMatrix();
-    // Colour red.
-    glColor3f(1, 0.26f, 0.26f); // rgb
 
-    //glScalef(CABIN_LENGTH / TOTAL_WIDTH, TOTAL_HEIGHT / TOTAL_WIDTH, 1); // xyz
-    glTranslatef(-((LOCOMOTIVE_BODY_LENGTH * TOTAL_WIDTH) - CABIN_LENGTH),0,0);
-
-    glScalef(2, TOTAL_HEIGHT, CABIN_LENGTH);
-
+    glColor3f(1, 0.26f, 0.26f); // red
     glRotatef(-90, 0, 1, 0);
     this->DrawLocomotiveOctagon(CABIN_LENGTH);
 
     glPopMatrix();
 }
 
-
 void Locomotive::DrawNose() {
     glPushMatrix();
-    glColor3f(1, 1, 1);
 
-    glTranslatef(-(TOTAL_LENGTH * 3), 0, 0);
-    //glScalef(TOTAL_LENGTH / TOTAL_WIDTH, TOTAL_HEIGHT / CABIN_LENGTH, 1); // xyz
-    //glutSolidCube(TOTAL_WIDTH);
-
-    glScalef(2, TOTAL_HEIGHT / 2, CABIN_LENGTH / 2);
-
+    glTranslatef(-(CABIN_LENGTH + NOSE_LENGTH), -(NOSE_HEIGHT*.65f), 0);
     glRotatef(-90, 0, 1, 0);
-    this->DrawLocomotiveOctagon(TOTAL_WIDTH);
+    glScalef(TOTAL_WIDTH * .8f, TOTAL_HEIGHT * .35f, 1);
+    this->DrawLocomotiveOctagon(NOSE_LENGTH);
 
     glPopMatrix();
 }
 
 void Locomotive::DrawLocomotiveOctagon(const GLfloat sideLength, GLfloat division) {
     // Define vertices in counter-clockwise (CCW) order with normal pointing out
-
-    // TODO: investigate whether bottom faces are being drawn correctly.
 
     // Top face (y = 1.0f)
     glPushMatrix();
@@ -76,8 +63,6 @@ void Locomotive::DrawLocomotiveOctagon(const GLfloat sideLength, GLfloat divisio
 
     glPushMatrix();
     glBegin(GL_QUADS);
-    //glColor3f(1, 0, 1);
-
     // Bottom face (y = -1.0f)
     glVertex3f(sideLength, -sideLength, sideLength);
     glVertex3f(-sideLength, -sideLength, sideLength);
