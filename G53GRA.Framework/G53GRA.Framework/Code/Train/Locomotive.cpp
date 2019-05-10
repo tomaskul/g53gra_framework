@@ -61,16 +61,22 @@ void Locomotive::DrawNose() {
 void Locomotive::DrawLocomotiveOctagon(const GLfloat sideLength, GLfloat division) {
     // Define vertices in counter-clockwise (CCW) order with normal pointing out
 
-    glPushMatrix();
-    glBegin(GL_QUADS);
-
-    // TODO: investigate whether top & bottom faces are being drawn correctly.
+    // TODO: investigate whether bottom faces are being drawn correctly.
 
     // Top face (y = 1.0f)
-    glVertex3f(sideLength, sideLength, -sideLength);
-    glVertex3f(-sideLength, sideLength, -sideLength);
-    glVertex3f(-sideLength, sideLength, sideLength);
-    glVertex3f(sideLength, sideLength, sideLength);
+    glPushMatrix();
+    glTranslatef(0, sideLength / division, 0);
+    glBegin(GL_QUADS);
+    glVertex3f(sideLength / division, sideLength / division, -sideLength);
+    glVertex3f(-sideLength / division, sideLength / division, -sideLength);
+    glVertex3f(-sideLength / division, sideLength / division, sideLength);
+    glVertex3f(sideLength / division, sideLength / division, sideLength);
+    glEnd();
+    glPopMatrix();
+
+    glPushMatrix();
+    glBegin(GL_QUADS);
+    //glColor3f(1, 0, 1);
 
     // Bottom face (y = -1.0f)
     glVertex3f(sideLength, -sideLength, sideLength);
