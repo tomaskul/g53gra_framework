@@ -8,21 +8,20 @@
 #define Cos(th) cos(M_PI/180*(th))
 #define Sin(th) sin(M_PI/180*(th))
 
-Tree::Tree() {
+Tree::Tree(float xTranslate, float yTranslate, float zTranslate)
+    : m_xTranslate(xTranslate), m_yTranslate(yTranslate), m_zTranslate(zTranslate)
+{
 }
 
 void Tree::Display() {
-    this->DrawTrunk();
-    //this->DrawTrunk(5);
-    //this->DrawTrunk(10, 0, 5);
-    this->DrawBranches();
+    this->DrawTrunk(m_xTranslate, m_yTranslate, m_zTranslate);
+    this->DrawBranches(m_xTranslate, m_yTranslate, m_zTranslate);
 }
 
 void Tree::DrawTrunk(float xTranslate, float yTranslate, float zTranslate) {
     glPushMatrix();
 
-    // Colour if brown.
-    glColor3f(0.525490196, 0.349019608, 0.176470588);
+    glColor3f(0.525490196f, 0.349019608f, 0.176470588f); // brown.
 
     glScalef(2.5, 7.5, 2.5);
 
@@ -40,15 +39,15 @@ void Tree::DrawTrunk(float xTranslate, float yTranslate, float zTranslate) {
     glPopMatrix();
 }
 
-void Tree::DrawBranches() {
+void Tree::DrawBranches(float xTranslate, float yTranslate, float zTranslate) {
     glPushMatrix();
 
-    // Green leaves.
-    glColor3f(0, 0.4, 0);
+    glColor3f(0, 0.4, 0); // green.
 
-    glTranslatef(0, 22, 0);
-    glScalef(5, 3, 5);
-    glutSolidSphere(5, 15, 15);
+    glScalef(2.5, 3, 2.5);
+
+    glTranslatef(xTranslate, 9.5f + yTranslate, zTranslate);
+    glutSolidSphere(7.5, 20, 15);
 
     glPopMatrix();
 }
