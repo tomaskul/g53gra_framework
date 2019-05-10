@@ -5,11 +5,9 @@
 #include "Tree.h"
 #include <math.h>
 
-#define Cos(th) cos(M_PI/180*(th))
-#define Sin(th) sin(M_PI/180*(th))
-
-Tree::Tree(float xTranslate, float yTranslate, float zTranslate)
-    : m_xTranslate(xTranslate), m_yTranslate(yTranslate), m_zTranslate(zTranslate)
+Tree::Tree(float xTranslate, float yTranslate, float zTranslate, GLuint trunkTexture, GLuint leavesTexture)
+    : m_xTranslate(xTranslate), m_yTranslate(yTranslate), m_zTranslate(zTranslate), m_TrunkTex(trunkTexture),
+    m_LeavesTex(leavesTexture)
 {
 }
 
@@ -28,13 +26,22 @@ void Tree::DrawTrunk(float xTranslate, float yTranslate, float zTranslate) {
     glTranslatef(xTranslate, yTranslate, zTranslate);
 
     glFrontFace(GL_CW);
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, m_TrunkTex);
     glBegin(GL_QUAD_STRIP);
     int degreesOfRotation = 10;
+    float textureCoordIncrement = 1.0 / static_cast<float>(360/degreesOfRotation);
     for(int i = 0; i <= 360; i += degreesOfRotation){
-        glVertex3f(Cos(i), +1, Sin(i));
-        glVertex3f(Cos(i), -1, Sin(i));
+        auto c = static_cast<float>(cos(degreesOfRotation * i));
+        auto s = static_cast<float>(sin(degreesOfRotation * i));
+
+        glTexCoord2f(textureCoordIncrement * i, 0);
+        glVertex3f(c, -1, s);
+        glTexCoord2f(textureCoordIncrement * i, 1.0);
+        glVertex3f(c, 1, s);
     }
     glEnd();
+    glDisable(GL_TEXTURE_2D);
 
     glPopMatrix();
 }
@@ -47,7 +54,11 @@ void Tree::DrawBranches(float xTranslate, float yTranslate, float zTranslate) {
     glScalef(2.5, 3, 2.5);
 
     glTranslatef(xTranslate, 9.5f + yTranslate, zTranslate);
+
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, m_LeavesTex);
     glutSolidSphere(7.5, 20, 15);
+    glDisable(GL_TEXTURE_2D);
 
     glPopMatrix();
 }
