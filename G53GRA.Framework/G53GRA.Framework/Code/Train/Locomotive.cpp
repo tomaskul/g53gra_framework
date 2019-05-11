@@ -11,9 +11,22 @@ Locomotive::Locomotive(){
 
 void Locomotive::Display() {
     glColor3f(1, 0.26f, 0.26f); // rgb
-    this->DrawMainBody();
+
+    glPushMatrix();
+
+    // Rotate locomotive around track origin.
+    glRotatef(m_trackRotation, .0f, 1.0f, .0f);
+
+    // Translate locomotive from track centre.
+    glTranslatef(0.0, 0.0, -m_distanceFromOrigin);
+
+    // Rotate locomotive around the track
+    glRotatef(m_axisRotation, .0f, .1f, .0f);
+
+    //this->DrawMainBody();
     this->DrawCabin();
     this->DrawNose();
+    glPopMatrix();
 }
 
 void Locomotive::DrawMainBody() {
@@ -49,6 +62,8 @@ void Locomotive::DrawNose() {
 
 void Locomotive::DrawLocomotiveOctagon(const GLfloat sideLength, GLfloat division) {
     // Define vertices in counter-clockwise (CCW) order with normal pointing out
+
+    glFrontFace(GL_CCW);
 
     // Top face (y = 1.0f)
     glPushMatrix();
@@ -150,4 +165,21 @@ void Locomotive::DrawLocomotiveOctagon(const GLfloat sideLength, GLfloat divisio
     glVertex3f(sideLength, 0, -sideLength); // bottom right
     glEnd();
     glPopMatrix();
+
+    glFrontFace(GL_CW);
+}
+
+void Locomotive::Update(const double &deltaTime) {
+    auto trackSpeed = 15.f;
+    auto speed = 1.5f;
+    m_axisRotation += speed * static_cast<float>(deltaTime);
+    m_trackRotation += trackSpeed * static_cast<float>(deltaTime);
+
+    if (m_axisRotation > 360.0f){
+        m_axisRotation - m_axisRotation - 360.0f;
+    }
+
+    if (m_trackRotation > 360.0f){
+        m_trackRotation - m_trackRotation - 360.0f;
+    }
 }

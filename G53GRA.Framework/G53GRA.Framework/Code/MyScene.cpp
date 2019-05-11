@@ -11,14 +11,14 @@ MyScene::MyScene(int argc, char** argv, const char *title, const int& windowWidt
 void MyScene::Initialise()
 {
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-	//Locomotive *locomotive = new Locomotive();
-	//AddObjectToScene(locomotive);
+	Locomotive *locomotive = new Locomotive();
+	AddObjectToScene(locomotive);
 
 	GLuint trunk = Scene::GetTexture("");
-	Tree *tree = new Tree(0,0,0,trunk, 0);
+	Tree *tree = new Tree(0,0,15,trunk, 0);
 	AddObjectToScene(tree);
 
-	glClearColor(1.0f, 0.5f, 0.5f, 1.0f);
+	glClearColor(1.0f, 0.5f, 0.25f, 1.0f);
 }
 
 void MyScene::Projection()
