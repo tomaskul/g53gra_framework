@@ -43,6 +43,8 @@ add_executable(G53GRA_Framework
         G53GRA.Framework/Code/Train/Locomotive.cpp
         G53GRA.Framework/Code/Landscape/Tree/Tree.h
         G53GRA.Framework/Code/Landscape/Tree/Tree.cpp
+        G53GRA.Framework/Code/World/Skybox.h
+        G53GRA.Framework/Code/World/Skybox.cpp
         G53GRA.Framework.sln)
 
 # Prevent 'undefined reference to 'gl____' functions
