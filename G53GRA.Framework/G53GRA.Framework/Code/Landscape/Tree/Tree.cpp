@@ -21,7 +21,7 @@ void Tree::DrawTrunk(float xTranslate, float yTranslate, float zTranslate) {
 
     glColor3f(0.525490196f, 0.349019608f, 0.176470588f); // brown.
 
-    glScalef(2.5, 7.5, 2.5);
+    glScalef(1.75, 6, 1.75);
 
     glTranslatef(xTranslate, yTranslate, zTranslate);
 
@@ -42,6 +42,7 @@ void Tree::DrawTrunk(float xTranslate, float yTranslate, float zTranslate) {
     }
     glEnd();
     glDisable(GL_TEXTURE_2D);
+    glFrontFace(GL_CCW);
 
     glPopMatrix();
 }
@@ -51,13 +52,13 @@ void Tree::DrawBranches(float xTranslate, float yTranslate, float zTranslate) {
 
     glColor3f(0, 0.4, 0); // green.
 
-    glScalef(2.5, 3, 2.5);
+    glScalef(1.75, 1.75, 1.75);
 
-    glTranslatef(xTranslate, 9.5f + yTranslate, zTranslate);
+    glTranslatef(xTranslate, 7.5f + yTranslate, zTranslate);
 
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, m_LeavesTex);
-    glutSolidSphere(7.5, 20, 15);
+    glutSolidSphere(5, 20, 15);
     glDisable(GL_TEXTURE_2D);
 
     glPopMatrix();
