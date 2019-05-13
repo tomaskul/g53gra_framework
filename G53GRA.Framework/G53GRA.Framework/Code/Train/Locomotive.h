@@ -39,10 +39,6 @@ private:
     float NOSE_HEIGHT = 3.808; // 4/5th of total height.
     float NOSE_LENGTH = 2.892; // 2/5 of cabin length.
 
-    GLfloat m_trackRotation = 0.0f;
-    GLfloat m_xTranslation = 0.0f;
-    GLfloat m_zTranslation = 0.0f;
-
     GLfloat m_rotationAngle = 1.0f;
     float m_distanceFromOrigin = 300.0f;
 };
