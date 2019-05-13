@@ -49,6 +49,8 @@ void Tree::DrawTrunk(float xTranslate, float yTranslate, float zTranslate) {
 
 void Tree::DrawBranches(float xTranslate, float yTranslate, float zTranslate) {
     glPushMatrix();
+    glPushAttrib(GL_ALL_ATTRIB_BITS);
+    glDisable(GL_LIGHTING);
 
     glColor3f(0, 0.4, 0); // green.
 
@@ -61,5 +63,33 @@ void Tree::DrawBranches(float xTranslate, float yTranslate, float zTranslate) {
     glutSolidSphere(5, 20, 15);
     glDisable(GL_TEXTURE_2D);
 
+    glPopAttrib();
     glPopMatrix();
+
+    glEnable(GL_LIGHTING);
+
+
+    static GLfloat _ambient[] =
+            {
+                    0.1f, 0.1f, 0.1f, 1.0f
+            };
+
+    static GLfloat _diffuse[] =
+            {
+                    1.0f, 1.0f, 1.0f, 1.0f
+            };
+
+    static GLfloat _specular[] =
+            {
+                    1.0f, 1.0f, 0.0f, 1.0f
+            };
+    glLightfv(GL_LIGHT0, GL_AMBIENT, _ambient);
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, _diffuse);
+    glLightfv(GL_LIGHT0, GL_SPECULAR, _specular);
+
+    GLfloat lightpos[] = { pos[0], pos[1], pos[2], 1.0f };
+
+    glLightfv(GL_LIGHT0, GL_POSITION, lightpos);
+
+    glEnable(GL_LIGHT0);
 }
