@@ -13,7 +13,7 @@ Skybox::Skybox(GLuint textureBack, GLuint textureLeft, GLuint textureFront, GLui
 void Skybox::Display() {
     glPushMatrix();
 
-    // Move the skybox down to display the ground.
+    // Move the skybox down to provide better environment.
     glTranslatef(0, -m_skyboxScale/2, 0);
 
     // Scale up the skybox for it take up whole camera.
