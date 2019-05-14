@@ -1,7 +1,7 @@
-#include <Train/Locomotive.h>
 #include <Environment/Tree/Tree.h>
 #include <World/Skybox.h>
-#include <Environment/Comet.h>
+#include <Environment/Comet/Comet.h>
+#include <Spaceship/Spaceship.h>
 #include "MyScene.h"
 
 MyScene::MyScene(int argc, char** argv, const char *title, const int& windowWidth, const int& windowHeight)
@@ -16,12 +16,12 @@ void MyScene::Initialise()
 	auto *skybox = new Skybox(textureDirectory + "skybox/");
 	AddObjectToScene(skybox);
 
-	auto *locomotive = new Locomotive();
-	AddObjectToScene(locomotive);
+	auto *spaceship = new Spaceship();
+	AddObjectToScene(spaceship);
 
 
 	GLuint trunk = Scene::GetTexture(textureDirectory + "TexturesCom_BarkDecidious0026_S.bmp");
-	Tree *tree = new Tree(0, 0, 0, trunk, 0);
+	Tree *tree = new Tree(0, 0, 0, trunk);
 	AddObjectToScene(tree);
 
 	auto *comet = new Comet(5, 2, 15);

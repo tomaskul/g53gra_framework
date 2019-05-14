@@ -5,9 +5,8 @@
 #include "Tree.h"
 #include <math.h>
 
-Tree::Tree(float xTranslate, float yTranslate, float zTranslate, GLuint trunkTexture, GLuint leavesTexture)
-    : m_xTranslate(xTranslate), m_yTranslate(yTranslate), m_zTranslate(zTranslate), m_TrunkTex(trunkTexture),
-    m_LeavesTex(leavesTexture)
+Tree::Tree(float xTranslate, float yTranslate, float zTranslate, GLuint trunkTexture)
+    : m_xTranslate(xTranslate), m_yTranslate(yTranslate), m_zTranslate(zTranslate), m_TrunkTex(trunkTexture)
 {
 }
 
@@ -19,7 +18,7 @@ void Tree::Display() {
 void Tree::DrawTrunk(float xTranslate, float yTranslate, float zTranslate) {
     glPushMatrix();
 
-    glColor3f(0.525490196f, 0.349019608f, 0.176470588f); // brown.
+    //glColor3f(0.525490196f, 0.349019608f, 0.176470588f); // brown.
 
     glScalef(1.75, 6, 1.75);
 
@@ -50,44 +49,29 @@ void Tree::DrawTrunk(float xTranslate, float yTranslate, float zTranslate) {
 void Tree::DrawBranches(float xTranslate, float yTranslate, float zTranslate) {
     glPushMatrix();
     glPushAttrib(GL_ALL_ATTRIB_BITS);
-    glDisable(GL_LIGHTING);
+    {
+        glDisable(GL_LIGHTING);
 
-    glColor3f(0, 0.4, 0); // green.
-
-    glScalef(1.75, 1.75, 1.75);
-
-    glTranslatef(xTranslate, 7.5f + yTranslate, zTranslate);
-
-    glEnable(GL_TEXTURE_2D);
-    glBindTexture(GL_TEXTURE_2D, m_LeavesTex);
-    glutSolidSphere(5, 20, 15);
-    glDisable(GL_TEXTURE_2D);
-
+        glScalef(1.75, 1.75, 1.75);
+        glTranslatef(xTranslate, 7.5f + yTranslate, zTranslate);
+        glColor3f(1, 0.278431373f, 0.101960784f); // orange.
+        glutSolidSphere(5, 20, 15);
+    }
     glPopAttrib();
     glPopMatrix();
 
+
     glEnable(GL_LIGHTING);
 
+    static GLfloat ambient[] = { .5f, 0.1f, 0.1f, 1.0f };
+    static GLfloat diffuse[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+    static GLfloat specular[] = { 1.0f, 1.0f, 1.0f, 1.0f };
 
-    static GLfloat _ambient[] =
-            {
-                    0.1f, 0.1f, 0.1f, 1.0f
-            };
+    glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
+    glLightfv(GL_LIGHT0, GL_SPECULAR, specular);
 
-    static GLfloat _diffuse[] =
-            {
-                    1.0f, 1.0f, 1.0f, 1.0f
-            };
-
-    static GLfloat _specular[] =
-            {
-                    1.0f, 1.0f, 0.0f, 1.0f
-            };
-    glLightfv(GL_LIGHT0, GL_AMBIENT, _ambient);
-    glLightfv(GL_LIGHT0, GL_DIFFUSE, _diffuse);
-    glLightfv(GL_LIGHT0, GL_SPECULAR, _specular);
-
-    GLfloat lightpos[] = { pos[0], pos[1], pos[2], 1.0f };
+    GLfloat lightpos[] = { xTranslate, 7.5f + yTranslate, zTranslate, 1.0f };
 
     glLightfv(GL_LIGHT0, GL_POSITION, lightpos);
 

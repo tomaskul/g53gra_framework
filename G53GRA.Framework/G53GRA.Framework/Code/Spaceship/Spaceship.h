@@ -1,21 +1,21 @@
 //
-// Created by ghost on 20/04/19.
+// Created by Tomas on 20/04/19.
 //
 
-#ifndef G53GRA_FRAMEWORK_LOCOMOTIVE_H
-#define G53GRA_FRAMEWORK_LOCOMOTIVE_H
+#ifndef G53GRA_FRAMEWORK_SPACESHIP_H
+#define G53GRA_FRAMEWORK_SPACESHIP_H
 
 
 #include <Interface/DisplayableObject.h>
 #include <Interface/Animation.h>
 
-class Locomotive :
+class Spaceship :
         public DisplayableObject,
         public Animation
 {
 public:
-    Locomotive();
-    ~Locomotive(){};
+    Spaceship();
+    ~Spaceship(){};
 
     void Display();
     void Update(const double& deltaTime);
@@ -25,14 +25,14 @@ private:
     void DrawCabin();
     void DrawNose();
 
-    void DrawLocomotiveOctagon(const GLfloat sideLength, GLfloat division = 2);
+    void DrawShipOctagon(const GLfloat sideLength, GLfloat division = 2);
 
-    // Locomotive dimensions in meters.
+    // Spaceship dimensions in meters.
     float TOTAL_HEIGHT = 4.76;
     float TOTAL_WIDTH = 3.12;
     float TOTAL_LENGTH = 21.69;
 
-    float LOCOMOTIVE_BODY_LENGTH = 14.46; // 2/3 of total length.
+    float CONTROL_CENTRE_BODY_LENGTH = 14.46; // 2/3 of total length.
 
     float CABIN_LENGTH = 7.23; // 3rd of total length.
 
@@ -44,4 +44,4 @@ private:
 };
 
 
-#endif //G53GRA_FRAMEWORK_LOCOMOTIVE_H
+#endif //G53GRA_FRAMEWORK_SPACESHIP_H
