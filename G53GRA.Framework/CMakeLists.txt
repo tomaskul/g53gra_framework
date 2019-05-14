@@ -39,16 +39,20 @@ add_executable(G53GRA_Framework
         G53GRA.Framework/Framework/Utility/Texture.cpp
         G53GRA.Framework/Framework/Utility/Texture.h
         G53GRA.Framework/Framework/Utility/VectorMath.h
-        G53GRA.Framework/Code/Spaceship/Spaceship.h
-        G53GRA.Framework/Code/Spaceship/Spaceship.cpp
-        G53GRA.Framework/Code/Environment/Tree/Tree.h
-        G53GRA.Framework/Code/Environment/Tree/Tree.cpp
         G53GRA.Framework/Code/World/Skybox.h
         G53GRA.Framework/Code/World/Skybox.cpp
+        G53GRA.Framework/Code/Environment/Spaceship/Spaceship.h
+        G53GRA.Framework/Code/Environment/Spaceship/Spaceship.cpp
+        G53GRA.Framework/Code/Environment/Tree/Tree.h
+        G53GRA.Framework/Code/Environment/Tree/Tree.cpp
+        G53GRA.Framework/Code/Environment/Star/Star.h
+        G53GRA.Framework/Code/Environment/Star/Star.cpp
         G53GRA.Framework/Code/Environment/Comet/CometTail.h
         G53GRA.Framework/Code/Environment/Comet/CometTail.cpp
         G53GRA.Framework/Code/Environment/Comet/Comet.h
         G53GRA.Framework/Code/Environment/Comet/Comet.cpp
+        G53GRA.Framework/Code/Environment/Robot/Robot.h
+        G53GRA.Framework/Code/Environment/Robot/Robot.cpp
         G53GRA.Framework.sln)
 
 # Prevent 'undefined reference to 'gl____' functions
