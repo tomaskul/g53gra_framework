@@ -4,11 +4,15 @@
 
 #include "Skybox.h"
 
-Skybox::Skybox(GLuint textureBack, GLuint textureLeft, GLuint textureFront, GLuint textureUp, GLuint textureDown,
-        GLuint textureRight) : m_textureBack(textureBack), m_textureLeft(textureLeft), m_textureFront(textureFront),
-        m_textureUp(textureUp), m_textureDown(textureDown), m_textureRight(textureRight)
-{
+Skybox::Skybox(std::string skyboxTextureDirectory) {
+    m_textureBack = static_cast<GLuint>(Scene::GetTexture(skyboxTextureDirectory + "back.bmp"));
+    m_textureLeft = static_cast<GLuint>(Scene::GetTexture(skyboxTextureDirectory + "left.bmp"));
+    m_textureFront = static_cast<GLuint>(Scene::GetTexture(skyboxTextureDirectory + "front.bmp"));
+    m_textureUp = static_cast<GLuint>(Scene::GetTexture(skyboxTextureDirectory + "up.bmp"));
+    m_textureDown = static_cast<GLuint>(Scene::GetTexture(skyboxTextureDirectory + "down.bmp"));
+    m_textureRight = static_cast<GLuint>(Scene::GetTexture(skyboxTextureDirectory + "right.bmp"));
 }
+
 
 void Skybox::Display() {
     glPushMatrix();

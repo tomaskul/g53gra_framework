@@ -12,8 +12,7 @@ class Skybox :
         public DisplayableObject
 {
 public:
-    Skybox(GLuint textureBack, GLuint textureLeft, GLuint textureFront, GLuint textureUp, GLuint textureDown,
-            GLuint textureRight);
+    Skybox(std::string skyboxTextureDirectory);
     ~Skybox(){};
 
     void Display();
