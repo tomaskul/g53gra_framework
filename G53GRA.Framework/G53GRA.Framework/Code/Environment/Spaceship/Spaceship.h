@@ -8,10 +8,12 @@
 
 #include <Interface/DisplayableObject.h>
 #include <Interface/Animation.h>
+#include <Interface/Input.h>
 
 class Spaceship :
         public DisplayableObject,
-        public Animation
+        public Animation,
+        public Input
 {
 public:
     Spaceship();
@@ -19,6 +21,7 @@ public:
 
     void Display();
     void Update(const double& deltaTime);
+    void HandleKey(unsigned char key, int state, int mx, int my);
 
 private:
     void DrawMainBody();
@@ -39,6 +42,7 @@ private:
     float NOSE_HEIGHT = 3.808; // 4/5th of total height.
     float NOSE_LENGTH = 2.892; // 2/5 of cabin length.
 
+    float m_orbitSpeed = 20.0f;
     GLfloat m_rotationAngle = 1.0f;
     float m_distanceFromOrigin = 500.0f;
 };

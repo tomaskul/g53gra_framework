@@ -165,9 +165,20 @@ void Spaceship::DrawShipOctagon(const GLfloat sideLength, GLfloat division) {
 }
 
 void Spaceship::Update(const double &deltaTime) {
-    auto trackSpeed = 20.f;
-    m_rotationAngle += trackSpeed * static_cast<float>(deltaTime);
+    m_rotationAngle += m_orbitSpeed * static_cast<float>(deltaTime);
     if (m_rotationAngle >= 360.0f){
         m_rotationAngle = m_rotationAngle - 360.0f;
+    }
+}
+
+void Spaceship::HandleKey(unsigned char key, int state, int mx, int my) {
+    switch (key)
+    {
+        case '+':
+            m_orbitSpeed += 1.0f;
+            break;
+        case '-':
+            m_orbitSpeed -= 1.0f;
+            break;
     }
 }
