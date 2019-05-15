@@ -22,6 +22,7 @@ public:
 
 private:
     bool m_drawAstraunaut = false;
+    int m_stage = 0;
 
     float m_spaceshipSpeed = 0.0f;
     float m_totalRotationAngle = 0.0f;
@@ -29,7 +30,7 @@ private:
 
     float m_xTranslate = 0.0f;
     float m_yTranslate = 0.0f;
-    float m_zTranslate = 0.0f;
+    float m_zTranslate = -500.0f;
 };
 
 
