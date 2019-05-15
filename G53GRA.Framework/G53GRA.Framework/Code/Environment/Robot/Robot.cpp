@@ -88,11 +88,11 @@ void Robot::Update(const double &deltaTime) {
     } else if (m_stage == 3){
         // Move up into catchment area.
         m_yTranslate += change * 0.15;
-
         return;
+
     } else if (m_stage == 4){
         // Sucked into the star.
-
         m_zTranslate += change * 0.5;
+        return;
     }
 }
