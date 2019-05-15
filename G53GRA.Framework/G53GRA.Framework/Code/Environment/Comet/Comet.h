@@ -24,6 +24,7 @@ public:
 private:
     float m_xTranslate = 0.0f;
     float m_yTranslate = 0.0f;
+    float m_zTranslate = 300.0;
 
     float m_cometSize;
     float m_cometSpeed;

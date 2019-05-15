@@ -16,11 +16,11 @@ void Comet::Display() {
     glPushMatrix();
 
     // Scale the matrix to give comet elongated look.
-    glScalef(0.75, 0.5, 0.5);
+    glScalef(0.25, 0.125, 0.125);
 
     glRotatef(30.f, 0, 1, 0);
 
-    glTranslatef(m_xTranslate, m_yTranslate, 0);
+    glTranslatef(m_xTranslate, m_yTranslate, m_zTranslate);
 
     // Colour comet grey.
     glColor3f(0.701960784f, 0.701960784f, 0.701960784f);
@@ -33,9 +33,9 @@ void Comet::Display() {
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
 
-    for(auto i = 0; i < m_tail.size(); i++){
-        glTranslatef(-m_tail[i]->Size, m_tail[i]->Size, 0);
-        m_tail[i]->Display();
+    for (auto &i : m_tail) {
+        glTranslatef(-i->Size, i->Size, 0);
+        i->Display();
     }
 
     glDisable(GL_BLEND);
