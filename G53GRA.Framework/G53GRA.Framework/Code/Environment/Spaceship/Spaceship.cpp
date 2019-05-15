@@ -20,7 +20,7 @@ void Spaceship::Display() {
     glRotatef(m_rotationAngle, .0f, 10.0f, .0f);
 
     // Translate spaceship from track centre.
-    glTranslatef(0.0, -10.0, -m_distanceFromOrigin);
+    glTranslatef(.0f, -10.0f, -500.0f);
 
     this->DrawMainBody();
     this->DrawCabin();
@@ -165,7 +165,7 @@ void Spaceship::DrawShipOctagon(const GLfloat sideLength, GLfloat division) {
 }
 
 void Spaceship::Update(const double &deltaTime) {
-    auto trackSpeed = 15.f;
+    auto trackSpeed = 20.f;
     m_rotationAngle += trackSpeed * static_cast<float>(deltaTime);
     if (m_rotationAngle >= 360.0f){
         m_rotationAngle = m_rotationAngle - 360.0f;
