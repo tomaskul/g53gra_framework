@@ -180,5 +180,8 @@ void Spaceship::HandleKey(unsigned char key, int state, int mx, int my) {
         case '-':
             m_orbitSpeed -= 1.0f;
             break;
+        case ' ':
+            m_orbitSpeed = 20.0f;
+            break;
     }
 }
